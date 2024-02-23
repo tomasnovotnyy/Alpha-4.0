@@ -26,7 +26,8 @@ class UDP:
         try:
             UDP.udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             UDP.udp_socket.bind(('', 9876))
-            UDP.udp_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)  # Přidáno nastavení pro povolení broadcast zpráv
+            UDP.udp_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)  # Přidáno nastavení pro povolení
+            # broadcast zpráv
             udp_listener_thread = threading.Thread(target=UDP.udp_listener)
             udp_listener_thread.start()
         except Exception as ex:
