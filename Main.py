@@ -6,10 +6,13 @@ from UDP import UDP
 
 
 def cleanup_and_exit():
-    UDP.udp_socket.close()
-    UDP.tcp_server_socket.close()
+    if UDP.udp_socket is not None:
+        UDP.udp_socket.close()
+    if UDP.tcp_server_socket is not None:
+        UDP.tcp_server_socket.close()
     for client_socket in UDP.tcp_client_sockets:
-        client_socket.close()
+        if client_socket is not None:
+            client_socket.close()
     sys.exit(0)
 
 
