@@ -4,8 +4,6 @@ import sys
 
 from UDP import UDP
 
-exit_flag = False
-
 
 def cleanup_and_exit():
     if UDP.udp_socket is not None:
@@ -18,13 +16,8 @@ def cleanup_and_exit():
     sys.exit(0)
 
 
-def signal_handler(signal, frame):
-    global exit_flag
-    exit_flag = True
-
-
 def main():
-    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGINT, lambda signal, frame: cleanup_and_exit())
 
     UDP.start_udp_listener()
     UDP.periodic_udp_discovery()
@@ -42,10 +35,7 @@ def main():
     receive_thread = threading.Thread(target=UDP.receive_messages)
     receive_thread.start()
 
-    global exit_flag
     while True:
-        if exit_flag:
-            cleanup_and_exit()
         pass
 
 
