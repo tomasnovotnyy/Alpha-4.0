@@ -1,17 +1,27 @@
 import threading
+import signal
+import sys
 
 from UDP import UDP
 
 
+def cleanup_and_exit():
+    UDP.udp_socket.close()
+    UDP.tcp_server_socket.close()
+    for client_socket in UDP.tcp_client_sockets:
+        client_socket.close()
+    sys.exit(0)
+
+
 def main():
+    signal.signal(signal.SIGINT, lambda signal, frame: cleanup_and_exit())
+
     UDP.start_udp_listener()
     UDP.periodic_udp_discovery()
 
-    # Spustíme TCP server
     tcp_server_thread = threading.Thread(target=UDP.start_tcp_server)
     tcp_server_thread.start()
 
-    # Spustíme TCP klienta pro každého nalezeného peeru
     for peer_ip in UDP.discovered_peers:
         tcp_client_thread = threading.Thread(target=UDP.start_tcp_client, args=(peer_ip,))
         tcp_client_thread.start()
@@ -22,13 +32,8 @@ def main():
     receive_thread = threading.Thread(target=UDP.receive_messages)
     receive_thread.start()
 
-    try:
-        input()  # Program bude běžet, dokud uživatel nezadá Enter
-    finally:
-        UDP.udp_socket.close()
-        UDP.tcp_server_socket.close()
-        for client_socket in UDP.tcp_client_sockets:
-            client_socket.close()
+    while True:
+        pass
 
 
 if __name__ == "__main__":

@@ -7,7 +7,7 @@ import json
 class UDP:
 
     udp_socket = None
-    my_peer_id = "Tomas"  # Změňte podle potřeby
+    my_peer_id = "Tomas Novotny, C4b"
     tcp_server_socket = None
     tcp_client_sockets = []
     messages = {}
@@ -32,13 +32,6 @@ class UDP:
             udp_listener_thread.start()
         except Exception as ex:
             print(ex)
-
-    @staticmethod
-    def udp_listener():
-        while True:
-            data, addr = UDP.udp_socket.recvfrom(1024)
-            message = data.decode('utf-8')
-            print("Received UDP: " + message)
 
     @staticmethod
     def periodic_udp_discovery():
