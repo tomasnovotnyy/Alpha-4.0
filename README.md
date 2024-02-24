@@ -1,8 +1,23 @@
-# Alpha-4.0
+# Alpha-4.0 (Peer-to-peer chat)
+## Autor: Tomáš Novotný, kontakt: novotny10@spsejecna.cz
+## Datum vypracování: 09.02.2024 - 25.02.2024
+## Název a adresa školy: Střední průmyslová škola elektrotechnická, Praha 2, Ječná 30
 
-# UDP.py
+# *Popis programu*
+Tento program je navržen pro komunikaci mezi peer-to-peer sítěmi pomocí UDP a TCP protokolů. 
 
-Třída `UDP` je statická třída, která zvládá komunikaci pomocí socketů jak pro UDP, tak pro TCP. Je navržena tak, aby objevovala vrstevníky, odesílala a přijímala zprávy pomocí protokolů UDP a TCP.
+Program využívá třídu `Communication`, která obsahuje metody pro komunikaci pomocí UDP a TCP. Třída `Communication` obsahuje metody pro naslouchání příchozím paketům UDP, odesílání zpráv o objevení UDP, odesílání a přijímání zpráv a práci s TCP serverem a klientem.
+
+Program pravidelně odesílá zprávy o objevení UDP na broadcastovou adresu, aby objevil vrstevníky v síti. Když program objeví vrstevníka, vytvoří TCP klienta pro komunikaci s tímto vrstevníkem.
+
+Program také obsahuje metody pro odesílání a přijímání zpráv. Uživatel může zadat zprávu, která se odesílá všem připojeným klientům TCP. Přijaté zprávy se vypisují do konzole.
+
+Pokud je program přerušen, funkce `cleanup_and_exit` uzavře všechny otevřené sokety a ukončí program.
+</br></br>
+
+# Communication.py
+
+Třída `Communication` je statická třída, která zvládá komunikaci pomocí socketů jak pro UDP, tak pro TCP. Je navržena tak, aby objevovala vrstevníky, odesílala a přijímala zprávy pomocí protokolů UDP a TCP.
 
 ## Atributy
 
