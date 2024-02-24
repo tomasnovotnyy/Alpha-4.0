@@ -6,6 +6,9 @@ from UDP import UDP
 
 
 def cleanup_and_exit():
+    """
+    Uzavře všechny otevřené sokety a ukončí program.
+    """
     if UDP.udp_socket is not None:
         UDP.udp_socket.close()
     if UDP.tcp_server_socket is not None:
@@ -17,6 +20,10 @@ def cleanup_and_exit():
 
 
 def main():
+    """
+    Hlavní funkce aplikace. Nastavuje aplikaci a spouští vlákna pro UDP a TCP komunikaci.
+    :return:
+    """
     signal.signal(signal.SIGINT, lambda signal, frame: cleanup_and_exit())
 
     UDP.start_udp_listener()

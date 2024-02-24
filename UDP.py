@@ -5,6 +5,10 @@ import json
 
 
 class UDP:
+    """
+    Třída `UDP` je statická třída, která zvládá komunikaci pomocí socketů jak pro UDP, tak pro TCP.
+    Je navržena tak, aby objevovala vrstevníky, odesílala a přijímala zprávy pomocí protokolů UDP a TCP.
+    """
 
     udp_socket = None
     my_peer_id = "Tomas Novotny, C4b"
@@ -15,6 +19,9 @@ class UDP:
 
     @staticmethod
     def udp_listener():
+        """
+        Naslouchá příchozím paketům UDP a přidává IP adresu odesílatele do sady `discovered_peers`.
+        """
         while True:
             data, addr = UDP.udp_socket.recvfrom(1024)
             message = data.decode('utf-8')
@@ -23,10 +30,13 @@ class UDP:
 
     @staticmethod
     def start_udp_listener():
+        """
+        Inicializuje socket UDP a spustí naslouchání UDP v novém vlákně.
+        """
         try:
             UDP.udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             UDP.udp_socket.bind(('', 9876))
-            UDP.udp_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)  # Přidáno nastavení pro povolení
+            UDP.udp_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
             # broadcast zpráv
             udp_listener_thread = threading.Thread(target=UDP.udp_listener)
             udp_listener_thread.start()
@@ -35,24 +45,35 @@ class UDP:
 
     @staticmethod
     def periodic_udp_discovery():
+        """
+        Pravidelně odesílá zprávy o objevení UDP na broadcastovou adresu.
+        """
         while True:
             UDP.send_udp_discovery()
             time.sleep(5)
 
     @staticmethod
     def send_udp_discovery():
+        """
+        Odesílá zprávu o objevení UDP na broadcastovou adresu.
+        """
         udp_message = json.dumps({"command": "hello", "peer_id": UDP.my_peer_id})
         UDP.udp_socket.sendto(udp_message.encode('utf-8'), ('<broadcast>', 9876))
 
-
     @staticmethod
     def send_messages():
+        """
+        Neustále vyzývá uživatele k zadání zprávy a odesílá ji všem připojeným klientům TCP.
+        """
         while True:
             message = input("Enter a message: ")
             UDP.send_tcp_message(message)
 
     @staticmethod
     def receive_messages():
+        """
+        Neustále vypisuje přijaté zprávy do konzole.
+        """
         while True:
             for message_id, message in UDP.messages.items():
                 print(f"{message['peer_id']}: {message['message']}")
@@ -60,6 +81,9 @@ class UDP:
 
     @staticmethod
     def start_tcp_server():
+        """
+        Inicializuje serverový socket TCP a naslouchá příchozím spojením v novém vlákně.
+        """
         UDP.tcp_server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         UDP.tcp_server_socket.bind(('', 9876))
         UDP.tcp_server_socket.listen()
@@ -70,6 +94,9 @@ class UDP:
 
     @staticmethod
     def handle_client(client_socket):
+        """
+        Řeší komunikaci s připojeným klientem TCP.
+        """
         while True:
             data = client_socket.recv(1024)
             if not data:
@@ -85,6 +112,9 @@ class UDP:
 
     @staticmethod
     def start_tcp_client(peer_ip):
+        """
+        Připojuje se k serveru TCP na dané IP adrese a začíná vyměňovat zprávy.
+        """
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client_socket.connect((peer_ip, 9876))
         UDP.tcp_client_sockets.append(client_socket)
@@ -97,6 +127,9 @@ class UDP:
 
     @staticmethod
     def send_tcp_message(message):
+        """
+        Odesílá zprávu všem připojeným klientům TCP.
+        """
         message_id = str(int(time.time() * 1000))
         for client_socket in UDP.tcp_client_sockets:
             new_message = json.dumps({"command": "new_message", "message_id": message_id, "message": message})
@@ -104,6 +137,9 @@ class UDP:
 
     @staticmethod
     def merge_messages(new_messages):
+        """
+        Sloučí nově přijaté zprávy do slovníku `messages`.
+        """
         for message_id, message in new_messages.items():
             if message_id not in UDP.messages:
                 UDP.messages[message_id] = message
