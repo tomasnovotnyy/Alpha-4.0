@@ -102,6 +102,7 @@ Třída `Communication` je statická třída, která zvládá komunikaci pomocí
 - `start_tcp_client(peer_ip)`: Připojuje se k serveru TCP na dané IP adrese a začíná vyměňovat zprávy.
 - `send_tcp_message(message)`: Odesílá zprávu všem připojeným klientům TCP.
 - `merge_messages(new_messages)`: Sloučí nově přijaté zprávy do slovníku `messages`.
+</br></br>
 
 # *Třída Main.py*
 
