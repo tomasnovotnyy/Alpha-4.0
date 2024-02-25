@@ -63,8 +63,8 @@ Pro správné spuštění aplikace je třeba mít nainstalovaný Python, .NET a 
 2. Soubor extrahujte. Extrahovaný soubor bude obsahovat 2 následující soubory:
    - Složka Alpha4.0, kde je uložený celý projekt.
    - Textový soubor s odkazem na tuto GitHub stránku.
-4. V textovém souboru se přesměrujte na tuto GitHub stránku.
-5. Otevřete si svůj VM a nainstalujte všechny potřebné knihovny. Pro instalaci je dobré se seznámit s částí [Instalace potřebných knihoven]([https://github.com/tomasnovotnyy/Alpha-3.0?tab=readme-ov-file#instalace-knihovny-pyodbc](https://github.com/tomasnovotnyy/Alpha-4.0?tab=readme-ov-file#instalace-pot%C5%99ebn%C3%BDch-knihoven))
+4. V textovém souboru se pomocí odkazu přesměrujte na tuto GitHub stránku.
+5. Otevřete si svůj VM a nainstalujte všechny potřebné knihovny. Pro instalaci je dobré se seznámit s částí [Instalace potřebných knihoven]((https://github.com/tomasnovotnyy/Alpha-4.0?tab=readme-ov-file#instalace-pot%C5%99ebn%C3%BDch-knihoven))
 6. Nyní si ve svém VM zvolte místo, kde chcete mít uložený tento projekt.
 7. Naklonujte si projekt pomocí tohoto příkazu:
 ```
