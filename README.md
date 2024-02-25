@@ -15,6 +15,62 @@ Program také obsahuje metody pro odesílání a přijímání zpráv. Uživatel
 Pokud je program přerušen, funkce `cleanup_and_exit` uzavře všechny otevřené sokety a ukončí program.
 </br></br>
 
+# *Instalace potřebných knihoven*
+- Pro správné fungování programu je zapotřebí doinstalovat určité knihovny.
+- Nejjednoušší způsob, jak všechny knihovny nainstalovat, je spustit příkaz po příkazu tak, jak jsou zde napsány:
+## *Instalace pythonu*
+- Pro instalaci pythonu použijte následující příkaz:
+``` python
+sudo apt-get install python3
+```
+- Pro kontrolu verze pythonu použíjte následující příkaz:
+```
+python3 --version
+```
+## *Instalace knihovny .NET*
+- Pro instalaci .NET použijte následující příkazy tak, jak jsou zde napsány za sebou:
+1. ```
+   wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+   ```
+2. ```
+   chmod +x ./dotnet-install.sh
+   ```
+3. ```
+   ./dotnet-install.sh --channel 6.0
+   ```
+4. ```
+   export DOTNET_ROOT=$(pwd)/.dotnet
+   ```
+5. ```
+   export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+   ```
+
+## *Instalace knihovny git*
+- Pro instalaci gitu použijte následující příkaz:
+```
+sudo apt-get install git
+```
+- Pro kontrolu verze gitu použijte následující příkaz:
+```
+git -v
+```
+</br></br>
+
+# *Spuštění programu*
+Pro správné spuštění aplikace je třeba mít nainstalovaný Python, knihovnu pyodbc a je zapotřebí spustit skript Main.py z terminálu.</br>
+## *Spuštění skriptu Main.py:*
+1. Stáhněte si .zip soubor programu do svého PC.
+2. Soubor extrahujte. Extrahovaný soubor bude obsahovat 2 následující soubory:
+   - Složka Alpha3.0, kde je uložený celý projekt.
+   - Textový soubor s odkazem na tuto GitHub stránku.
+4. Spusťte si příkazový řádek.
+5. Pomocí příkazu `cd` se dostaňte do složky, kde máte uložený projekt.
+6. Nainstalujte knhovnu pyodbc. Pro instalaci je dobré se seznámit s částí [Instalace potřebných knihoven](https://github.com/tomasnovotnyy/Alpha-3.0?tab=readme-ov-file#instalace-knihovny-pyodbc)
+7. Pokud jste již uvnitř složky, kde máte uložený projekt a máte nainstalovanou knihovnu pyodbc, tak program spustíte následujícím příkazem: `python Main.py`
+
+Po úspěšném spuštění skriptu se program inicializuje a zobrazí uživatelské rozhraní, které umožní interakci a využití všech funkcí aplikace.
+</br></br>
+
 # Communication.py
 
 Třída `Communication` je statická třída, která zvládá komunikaci pomocí socketů jak pro UDP, tak pro TCP. Je navržena tak, aby objevovala vrstevníky, odesílala a přijímala zprávy pomocí protokolů UDP a TCP.
