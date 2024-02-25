@@ -2,7 +2,7 @@ import threading
 import signal
 import sys
 
-from Communication import Communication
+from src.Communication import Communication
 
 
 def cleanup_and_exit():
