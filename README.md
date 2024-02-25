@@ -61,7 +61,7 @@ Pro správné spuštění aplikace je třeba mít nainstalovaný Python, .NET a 
 ## *Spuštění skriptu*
 1. Stáhněte si .zip soubor programu do svého PC.
 2. Soubor extrahujte. Extrahovaný soubor bude obsahovat 2 následující soubory:
-   - Složka Alpha3.0, kde je uložený celý projekt.
+   - Složka Alpha4.0, kde je uložený celý projekt.
    - Textový soubor s odkazem na tuto GitHub stránku.
 4. V textovém souboru se přesměrujte na tuto GitHub stránku.
 5. Otevřete si svůj VM a nainstalujte všechny potřebné knihovny. Pro instalaci je dobré se seznámit s částí [Instalace potřebných knihoven]([https://github.com/tomasnovotnyy/Alpha-3.0?tab=readme-ov-file#instalace-knihovny-pyodbc](https://github.com/tomasnovotnyy/Alpha-4.0?tab=readme-ov-file#instalace-pot%C5%99ebn%C3%BDch-knihoven))
