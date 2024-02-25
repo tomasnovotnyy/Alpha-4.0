@@ -57,18 +57,23 @@ git -v
 </br></br>
 
 # *Spuštění programu*
-Pro správné spuštění aplikace je třeba mít nainstalovaný Python, knihovnu pyodbc a je zapotřebí spustit skript Main.py z terminálu.</br>
-## *Spuštění skriptu Main.py:*
+Pro správné spuštění aplikace je třeba mít nainstalovaný Python, .NET a git.</br>
+## *Spuštění skriptu*
 1. Stáhněte si .zip soubor programu do svého PC.
 2. Soubor extrahujte. Extrahovaný soubor bude obsahovat 2 následující soubory:
    - Složka Alpha3.0, kde je uložený celý projekt.
    - Textový soubor s odkazem na tuto GitHub stránku.
-4. Spusťte si příkazový řádek.
-5. Pomocí příkazu `cd` se dostaňte do složky, kde máte uložený projekt.
-6. Nainstalujte knhovnu pyodbc. Pro instalaci je dobré se seznámit s částí [Instalace potřebných knihoven](https://github.com/tomasnovotnyy/Alpha-3.0?tab=readme-ov-file#instalace-knihovny-pyodbc)
-7. Pokud jste již uvnitř složky, kde máte uložený projekt a máte nainstalovanou knihovnu pyodbc, tak program spustíte následujícím příkazem: `python Main.py`
-
-Po úspěšném spuštění skriptu se program inicializuje a zobrazí uživatelské rozhraní, které umožní interakci a využití všech funkcí aplikace.
+4. V textovém souboru se přesměrujte na tuto GitHub stránku.
+5. Otevřete si svůj VM a nainstalujte všechny potřebné knihovny. Pro instalaci je dobré se seznámit s částí [Instalace potřebných knihoven]([https://github.com/tomasnovotnyy/Alpha-3.0?tab=readme-ov-file#instalace-knihovny-pyodbc](https://github.com/tomasnovotnyy/Alpha-4.0?tab=readme-ov-file#instalace-pot%C5%99ebn%C3%BDch-knihoven))
+6. Nyní si ve svém VM zvolte místo, kde chcete mít uložený tento projekt.
+7. Naklonujte si projekt pomocí tohoto příkazu:
+```
+git clone https://github.com/tomasnovotnyy/Alpha-4.0.git
+```
+8. Pro spuštění programu se přesměrujte do nově vytvořené složky s názvem `Alpha-4.0` a napište následující:
+```
+python3 Main.py
+```
 </br></br>
 
 # Communication.py
