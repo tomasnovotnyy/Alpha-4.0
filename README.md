@@ -76,11 +76,11 @@ python3 Main.py
 ```
 </br></br>
 
-# Communication.py
+# *Třída Communication.py*
 
 Třída `Communication` je statická třída, která zvládá komunikaci pomocí socketů jak pro UDP, tak pro TCP. Je navržena tak, aby objevovala vrstevníky, odesílala a přijímala zprávy pomocí protokolů UDP a TCP.
 
-## Atributy
+## *Atributy*
 
 - `udp_socket`: Objekt socketu UDP používaný pro odesílání a přijímání paketů UDP.
 - `my_peer_id`: Řetězec představující jedinečný identifikátor aktuálního vrstevníka.
@@ -89,7 +89,7 @@ Třída `Communication` je statická třída, která zvládá komunikaci pomocí
 - `messages`: Slovník ukládající přijaté zprávy, klíčovaný podle ID zprávy.
 - `discovered_peers`: Sada ukládající IP adresy objevených vrstevníků.
 
-## Metody
+## *Metody*
 
 - `udp_listener()`: Naslouchá příchozím paketům UDP a přidává IP adresu odesílatele do sady `discovered_peers`.
 - `start_udp_listener()`: Inicializuje socket UDP a spustí naslouchání UDP v novém vlákně.
@@ -103,15 +103,15 @@ Třída `Communication` je statická třída, která zvládá komunikaci pomocí
 - `send_tcp_message(message)`: Odesílá zprávu všem připojeným klientům TCP.
 - `merge_messages(new_messages)`: Sloučí nově přijaté zprávy do slovníku `messages`.
 
-# Main.py
+# *Třída Main.py*
 
 Funkce `main()` v `Main.py` je vstupním bodem aplikace. Nastavuje zacházení se signály, spouští naslouchání a objevování UDP, spouští server TCP, připojuje se k objeveným vrstevníkům a začíná odesílat a přijímat zprávy.
 
-## Funkce
+## *Funkce*
 
 - `cleanup_and_exit()`: Uzavře všechny otevřené sockety a ukončí aplikaci.
 - `main()`: Hlavní funkce aplikace. Nastavuje aplikaci a spouští všechna potřebná vlákna.
 
-## Zacházení se signály
+## *Zacházení se signály*
 
 Funkce `main()` nastavuje obsluhu signálů pro signál `SIGINT` (obvykle odeslaný stiskem Ctrl+C). Když je tento signál přijat, volá se funkce `cleanup_and_exit()` pro uzavření všech otevřených socketů a ukončení aplikace.
